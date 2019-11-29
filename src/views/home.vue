@@ -1,14 +1,15 @@
 <template>
     <v-content>
       <v-container>
-        <v-card>
+        <v-card class="">
           <v-card-text>
             <v-row>
-              <v-col cols="4">
-
+              <v-col cols="5">
+                <img src="../assets/hacker.gif" width="100%" alt="">
               </v-col>
-              <v-col cols="8">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, laudantium fugiat? Molestias, nobis. Repellendus doloremque natus recusandae sequi dolores ullam cupiditate eum, perspiciatis laudantium! Voluptas nostrum quam repudiandae neque repellendus aspernatur perspiciatis ducimus, laboriosam saepe nemo! Et, dolorum. Eum nisi, consequuntur tempora molestiae dolores sequi harum aspernatur eaque repellat magni veritatis obcaecati rerum quaerat iste rem. Velit nulla porro adipisci alias facilis. Labore, eveniet. Ducimus ipsum aperiam ipsa libero quos corporis, provident soluta corrupti, nesciunt ut, illum modi eos eligendi dolorum mollitia possimus officia deleniti dignissimos animi? Ipsam repellat facere nisi libero dolor sed veniam voluptas optio possimus! Illum, eaque!
+              <v-col class="black--text" cols="7">
+                <div class="display-2">"Mamag-ogopa Tano Langon" is "Let us All Help"</div>
+                <!-- <div class="headline">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit ratione doloribus voluptates aut porro quisquam odio eaque commodi, harum aliquid, rerum animi ipsa vero ea nihil in sit sint totam! Voluptates iusto assumenda nesciunt aspernatur id minima unde, dolorum blanditiis eius repudiandae nostrum magnam doloribus molestias aperiam asperiores tempora dolor.</div> -->
               </v-col>
             </v-row>
           </v-card-text>
@@ -29,7 +30,7 @@
                 justify="center"
               >
                 <div 
-                  class="display-3">
+                  class="black--text display-3">
                   {{ slide.text }}
                 </div>
               </v-row>
