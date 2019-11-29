@@ -1,7 +1,7 @@
 <template>
     <v-content>
       <v-container>
-          <Slideshow />
+          <Slideshow carouselHeight="500" class="mb-15 elevation-2" />
           <div id="map"></div>
       </v-container>
     </v-content>
@@ -11,7 +11,6 @@
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet/dist/leaflet.js'
-import Slideshow from '../components/Slideshow'
 import { first } from '../geojson/first'
 import { first2nd } from '../geojson/first2nd'
 import { second } from '../geojson/second'
@@ -20,11 +19,13 @@ import { fourth } from '../geojson/fourth'
 import { fifth } from '../geojson/fifth'
 import { sixth } from '../geojson/sixth'
 import { seventh } from '../geojson/seventh'
+import Slideshow from '../components/Slideshow'
 
 export default {
   components: {
-    Slideshow,
+    Slideshow
   },
+
   data: () => ({
     first: first,
     first2nd: first2nd, 
@@ -97,6 +98,10 @@ export default {
 </script>
 
 <style>
+html {
+  scroll-behavior: smooth;
+}
+
 #map {
   height: 500px;
 }
@@ -115,5 +120,9 @@ export default {
 .my-mx-15 {
     margin-left: 6rem;
     margin-right: 6rem;
+}
+
+.mb-15 {
+  margin-bottom: 5rem;
 }
 </style>

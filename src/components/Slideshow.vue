@@ -1,32 +1,33 @@
 <template>
-    <v-carousel hide-delimiters>
+    <v-carousel 
+        cycle
+        interval="10000"
+        :height="carouselHeight"
+        hide-delimiters>
         <v-carousel-item
             v-for="(item,i) in items"
             :key="i"
             :src="item.src"
-        >
-        </v-carousel-item>
+        ></v-carousel-item>
     </v-carousel>
 </template>
 
 <script>
 export default {
+    props: {
+        carouselHeight: Number,
+    },
+
     data: () => ({
         items: [
             {
-                src: window.origin + '/pictures/pic1.jpg',
+                src: window.origin + '/carousel/about.gif',
             },
             {
-                src: window.origin + '/pictures/pic2.jpg',
+                src: window.origin + '/carousel/hacker.gif',
             },
             {
-                src: window.origin + '/pictures/pic3.jpg',
-            },
-            {
-                src: window.origin + '/pictures/pic4.jpg',
-            },
-            {
-                src: window.origin + '/pictures/pic5.jpg',
+                src: window.origin + '/carousel/pic3.jpg',
             },
         ]
     }),
