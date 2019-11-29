@@ -4,47 +4,50 @@
             <v-row>
                 <v-col lg="8" sm="12">
                     <v-row>
-                        <div class="photogametry justify-end">
-                            <iframe 
-                                title="A 3D model" 
-                                height="480" 
-                                width="640"
-                                src="https://sketchfab.com/models/c7aab06a022b4838b5d56eb4793fa572/embed?autostart=1&amp;camera=0" 
-                                frameborder="0" 
-                                allow="autoplay;" 
-                                mozallowfullscreen="false" 
-                                webkitallowfullscreen="false"></iframe>
-                        </div>
+                        <v-col>
+                            <div class="photogametry">
+                                <iframe 
+                                    title="A 3D model" 
+                                    height="300" 
+                                    width="750"
+                                    src="https://sketchfab.com/models/c7aab06a022b4838b5d56eb4793fa572/embed?autostart=1&amp;camera=0" 
+                                    frameborder="0" 
+                                    allow="autoplay;" 
+                                    mozallowfullscreen="false" 
+                                    webkitallowfullscreen="false"></iframe>
+                            </div>
+                        </v-col>
                     </v-row>
                     <v-row>
-                        <v-col class="pa-12">
-                            <h2>Rating</h2>
-                            <v-range-slider
-                                :tick-labels="['1', '2' ,'3' ,'4', '5']"
-                                :value="[0, 1]"
-                                min="0"
-                                max="4"
-                                ticks="always"
-                                tick-size="5"
-                            >
-                                <template v-slot:thumb-label="props">
-                                <v-icon dark>
-                                    mdi-account
-                                </v-icon>
-                                </template>
-                            </v-range-slider>
+                        <v-col>
+                            Images here
                         </v-col>
                     </v-row>
                 </v-col>
                 <v-col lg="4" sm="12">
-                    <v-card class="mb-5">
-                        <v-card-title>House 1</v-card-title>
+                    <v-card class="mb-2">
+                        <v-card-title>Site Number One</v-card-title>
                         <v-card-text>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio cumque beatae aut magnam harum illum est quos tempora repellat consectetur. Aspernatur a corporis repellat alias facilis assumenda provident quia! Id.
+                            <div class="mb-2">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor excepturi in assumenda aliquam ab facere saepe suscipit, expedita accusamus? Dolorem iure laborum doloremque optio animi!
+                            </div>
+                            <div class="black--text">
+                                <span>Rating: 8.3 / 10</span> <span><img height="100" src="../assets/leaf4.png" alt=""></span>
+                            </div>
                         </v-card-text>  
+                        <v-card-actions class="justify-center">
+                            <v-btn 
+                                depressed
+                                @click="rateDialog = !rateDialog"
+                                color="yellow darken-2">
+                                Rate
+                            </v-btn>
+                        </v-card-actions>
                     </v-card>
                     <v-card>
-                        <v-list-item v-for="(comment, index) in comments" :key="index">
+                        <v-list-item 
+                            v-for="(comment, index) in comments" 
+                            :key="index">
                             <v-list-item-content>
                                 <v-row>
                                     <v-col cols="2">
@@ -55,15 +58,20 @@
                                     <v-col cols="10">
                                         <div class="font-weight-bold">{{ comment.name }}</div>
                                         <div>{{ comment.text }}</div>
+                                        <small>{{ comment.created_at }}</small>
                                     </v-col>
                                 </v-row>
                             </v-list-item-content>
                         </v-list-item>
-                        <div class="mx-2">
+                        
+                        <div>
                             <v-text-field 
+                            class="m-0 p-0"
+                            append-icon="mdi-send"
                             v-model="inputComment"
                             placeholder="Write a comment..."
                             @keyup.enter="addComment"
+                            hide-details
                             filled></v-text-field>
                         </div>
                     </v-card>
@@ -71,23 +79,90 @@
             </v-row>
         </v-container>
         
+        <v-dialog
+            v-model="rateDialog"
+            width="500"
+            >
+            <v-card>
+                <v-card-title
+                primary-title
+                >
+                </v-card-title>
+
+                <v-card-text>
+                    <div class="text-center">
+                        <v-rating
+                        v-model="rating"
+                        color="yellow darken-2"
+                        size="32"
+                        ></v-rating>
+                    </div>
+                </v-card-text>
+
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                        color="primary"
+                        text
+                        @click="rateSubmit()"
+                        >
+                        Submit
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+        
+        <v-dialog
+            v-model="rateSubmitDialogMsg"
+            width="500"
+            >
+            <v-card>
+                <v-card-title
+                primary-title
+                >
+                </v-card-title>
+
+                <v-card-text>
+                    <div class="text-center">
+                        <div class="headline">Thank you for rating!</div>
+                    </div>
+                </v-card-text>
+
+
+                <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                    color="primary"
+                    text
+                    @click="rateSubmitDialogMsg = !rateSubmitDialogMsg"
+                    >
+                    Close
+                </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
     </v-content>
 </template>
 
 <script>
 export default {
     data: () => ({
+        rateSubmitDialogMsg: false,
+        rateDialog: false,
+        rating: '',
         inputComment: '',
         comments: [
             {
-                name: 'Erica',
+                name: 'Sylvannas Windrunner',
                 avatar: 'https://i.pravatar.cc/300?img=1',
-                text: 'Lorem ipsum dolor',
+                text: 'This is actually a good platform for the rejuvenation of Marawi',
+                created_at: '18 hours ago'
             },
             {
-                name: 'Jaina',
-                avatar: 'https://i.pravatar.cc/300?img=2',
+                name: 'Jaina Proudmoore',
+                avatar: 'https://i.pravatar.cc/300?img=5',
                 text: 'Dillum astranar ashenvale orgrimmar',
+                created_at: '8 hours ago'
             },
         ],
     }),
@@ -98,7 +173,15 @@ export default {
                 name: 'Drake',
                 avatar: 'https://i.pravatar.cc/300?img=3',
                 text: this.inputComment,
+                created_at: '3 seconds ago'
             })
+
+            this.inputComment = ''
+        },
+
+        rateSubmit() {
+            this.rateDialog = !this.rateDialog
+            this.rateSubmitDialogMsg = !this.rateSubmitDialogMsg 
         },
     },
 }

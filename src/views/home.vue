@@ -1,64 +1,9 @@
 <template>
     <v-content>
       <v-container>
-        <v-card class="">
-          <v-card-text>
-            <v-row>
-              <v-col cols="5">
-                <img src="../assets/hacker.gif" width="100%" alt="">
-              </v-col>
-              <v-col class="black--text" cols="7">
-                <div class="display-2">"Mamag-ogopa Tano Langon" is "Let us All Help"</div>
-                <!-- <div class="headline">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit ratione doloribus voluptates aut porro quisquam odio eaque commodi, harum aliquid, rerum animi ipsa vero ea nihil in sit sint totam! Voluptates iusto assumenda nesciunt aspernatur id minima unde, dolorum blanditiis eius repudiandae nostrum magnam doloribus molestias aperiam asperiores tempora dolor.</div> -->
-              </v-col>
-            </v-row>
-          </v-card-text>
-        </v-card>
-        <v-carousel height="200">
-          <v-carousel-item
-            v-for="(slide) in slides"
-            :key="slide"
-          >
-            <v-sheet
-              color="transparent"
-              height="100%"
-              tile
-            >
-              <v-row
-                class="fill-height"
-                align="center"
-                justify="center"
-              >
-                <div 
-                  class="black--text display-3">
-                  {{ slide.text }}
-                </div>
-              </v-row>
-            </v-sheet>
-          </v-carousel-item>
-        </v-carousel>
-      </v-container>
-      <!-- <div class="my-mx-15">
-        <div class="parallax">
-          <v-row>
-            <v-col cols="4">
-              <img src="../assets/icon.png" height="500" alt="">
-            </v-col>
-            <v-col cols="8">
-              this website aaims to promote   
-            </v-col>
-          </v-row>
-        </div>
-
-      </div> -->
-        <br>
-        <br>
-        <br>
-        <br>
-        
-        <v-container>
+          <Slideshow />
           <div id="map"></div>
-        </v-container>
+      </v-container>
     </v-content>
 </template>
 
@@ -66,6 +11,7 @@
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet/dist/leaflet.js'
+import Slideshow from '../components/Slideshow'
 import { first } from '../geojson/first'
 import { first2nd } from '../geojson/first2nd'
 import { second } from '../geojson/second'
@@ -76,6 +22,9 @@ import { sixth } from '../geojson/sixth'
 import { seventh } from '../geojson/seventh'
 
 export default {
+  components: {
+    Slideshow,
+  },
   data: () => ({
     first: first,
     first2nd: first2nd, 
@@ -88,11 +37,11 @@ export default {
     slides: [
       {
         text: 'clean marawi',
-        html: '',
+        html: `<div class="display-2">"Mamag-ogopa Tano Langon" is "Let us All Help"</div>`,
       },
       {
         text: 'help marawi',
-        html: '',
+        html: `<img src="../assets/hacker-new.gif" width="100%" alt="">`,
       },
       {
         text: 'rejuvenate',
