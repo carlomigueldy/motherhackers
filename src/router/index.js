@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import home from '../views/home'
-import login from '../views/auth/login'
+import photogrammetry from '../views/photogrammetry'
 
 Vue.use(VueRouter)
 
@@ -14,9 +14,9 @@ export default new VueRouter({
             component: home,
         },
         {
-            path: '/login',
-            name: 'login',
-            component: login,
-        },
+            path: '/photogrammetry',
+            name: 'photogrammetry',
+            component: photogrammetry,
+        }
     ],
 })
