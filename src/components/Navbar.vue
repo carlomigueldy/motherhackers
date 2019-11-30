@@ -1,10 +1,34 @@
 <template>
     <div>
-        <div>
+        <div class="d-none d-md-flex">
             <v-app-bar
                 app
                 dark
                 class="light-green darken-1 my-mx-15 elevation-0"
+            >
+                <span @click="$router.push({ name: 'home' })">
+                    <img src="../assets/icon.png" height="100" alt="">
+                </span>
+                <span @click="$router.push({ name: 'home' })">
+                    <v-toolbar-title>Cleaner Marawi</v-toolbar-title>
+                </span>
+
+                <v-spacer></v-spacer>
+
+                <span v-if="$router.currentRoute.name === 'photogrammetry'">
+                    <v-btn @click="$router.push({ name: 'home' })" text>Earn a Badge </v-btn>
+                </span>
+                <span v-else>
+                    <v-btn href="#map" text>Earn a Badge </v-btn>
+                </span>
+            </v-app-bar>
+        </div>
+
+        <div class="d-flex d-md-none d-lg-none d-xl-none">
+            <v-app-bar
+                app
+                dark
+                class="light-green darken-1 elevation-0"
             >
                 <span @click="$router.push({ name: 'home' })">
                     <img src="../assets/icon.png" height="100" alt="">
