@@ -1,7 +1,7 @@
 <template>
     <v-carousel 
         cycle
-        interval="10000"
+        interval="19500"
         :height="carouselHeight"
         hide-delimiters>
         <v-carousel-item
@@ -25,9 +25,6 @@ export default {
             },
             {
                 src: window.origin + '/carousel/hacker.gif',
-            },
-            {
-                src: window.origin + '/carousel/pic3.jpg',
             },
         ]
     }),

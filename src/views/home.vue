@@ -1,10 +1,10 @@
 <template>
-    <v-content>
-      <v-container>
-          <Slideshow carouselHeight="500" class="mb-15 elevation-2" />
-          <div id="map"></div>
-      </v-container>
-    </v-content>
+    <v-container>
+        <Slideshow 
+          :carouselHeight="600" 
+          class="elevation-2" />
+        <div id="map"></div>
+    </v-container>
 </template>
 
 <script>
@@ -73,6 +73,7 @@ export default {
             weight: 3,
         },
       }).addTo(map)
+      L.circleMarker([8.001522068007102, 124.28017616271974]).addTo(map)
 
       L.geoJSON(this.first2nd, {
         style: {
@@ -82,12 +83,61 @@ export default {
             weight: 3,
         },
       }).addTo(map)  
-      L.geoJSON(this.second).addTo(map)
-      L.geoJSON(this.third).addTo(map)
-      L.geoJSON(this.fourth).addTo(map)
-      L.geoJSON(this.fifth).addTo(map)
-      L.geoJSON(this.sixth).addTo(map)
-      L.geoJSON(this.seventh).addTo(map)
+      L.circleMarker([8.001522068007102, 124.28017616271974]).addTo(map)
+
+      L.geoJSON(this.second, {
+        style: {
+            fillColor: 'peachpuff',
+            color: 'grey',
+            fillOpacity: 0.5,
+            weight: 3,
+        },
+      }).addTo(map)
+
+      L.geoJSON(this.third, {
+        style: {
+            fillColor: 'peachpuff',
+            color: 'grey',
+            fillOpacity: 0.5,
+            weight: 3,
+        },
+      }).addTo(map)
+
+      L.geoJSON(this.fourth, {
+        style: {
+            fillColor: 'peachpuff',
+            color: 'grey',
+            fillOpacity: 0.5,
+            weight: 3,
+        },
+      }).addTo(map)
+
+      L.geoJSON(this.fifth, {
+        style: {
+            fillColor: 'peachpuff',
+            color: 'grey',
+            fillOpacity: 0.5,
+            weight: 3,
+        },
+      }).addTo(map)
+
+      L.geoJSON(this.sixth, {
+        style: {
+            fillColor: 'peachpuff',
+            color: 'grey',
+            fillOpacity: 0.5,
+            weight: 3,
+        },
+      }).addTo(map)
+
+      L.geoJSON(this.seventh, {
+        style: {
+            fillColor: 'peachpuff',
+            color: 'grey',
+            fillOpacity: 0.5,
+            weight: 3,
+        },
+      }).addTo(map)
 
       first.on('click', () => {
           this.$router.push({ name: 'photogrammetry' })
@@ -103,7 +153,8 @@ html {
 }
 
 #map {
-  height: 500px;
+  height: 633px;
+  z-index: 0;
 }
 
 .parallax {

@@ -244,6 +244,10 @@ export default {
         ]
     }),
 
+    created() {
+        console.log(this.$router.currentRoute.name)
+    },
+
     methods: {
         addComment() {
             this.comments.push({
