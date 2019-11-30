@@ -56,17 +56,17 @@ export default {
   },
 
   methods: {
-    customMarkerIcon(name) {
+    customMarkerIcon(name, customSize, customAnchorPoint) {
       return L.icon({
           iconUrl: `${window.origin}/customMarkers/${name}.png`,
-          iconSize:     [80, 100], // size of the icon
-          iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+          iconSize:     customSize ? customSize : [80, 100], // size of the icon
+          iconAnchor:   customAnchorPoint ? customAnchorPoint : [22, 94], // point of the icon which will correspond to marker's location
           popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
       })
     },
     
     initMap() {
-      let leaf0 = this.customMarkerIcon('leaf0')
+      let leaf0 = this.customMarkerIcon('leaf0', [50, 43], [35, 40])
       let leaf1 = this.customMarkerIcon('leaf1')
       let leaf2 = this.customMarkerIcon('leaf2')
       let leaf3 = this.customMarkerIcon('leaf3')

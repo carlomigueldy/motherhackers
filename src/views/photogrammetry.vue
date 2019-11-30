@@ -55,7 +55,7 @@
                             <v-card-title>Site Number One</v-card-title>
                             <v-card-text>
                                 <div class="mb-2">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor excepturi in assumenda aliquam ab facere saepe suscipit, expedita accusamus? Dolorem iure laborum doloremque optio animi!
+                                    This is a sample photogrammetry 3d object of a model we made. A model made from scratch - scpecifically, from cardboards. The photos are taken from camera phones.
                                 </div>
                                 <div class="black--text">
                                     <span>Rating: 8.3 / 10</span> <span><img height="35" src="../assets/leaf-4.png" alt=""></span>
@@ -64,6 +64,7 @@
                             <v-card-actions class="justify-center">
                                 <v-btn 
                                     depressed
+                                    :disabled="rated"
                                     @click="rateDialog = !rateDialog"
                                     color="yellow darken-2">
                                     Rate
@@ -160,7 +161,7 @@
                 <v-btn
                     color="primary"
                     text
-                    @click="rateSubmitDialogMsg = !rateSubmitDialogMsg"
+                    @click="closeRateDialog()"
                     >
                     Close
                 </v-btn>
@@ -214,6 +215,7 @@ export default {
         pic2Dialog: false,
         pic3Dialog: false,
         pic4Dialog: false,
+        rate: false,
         rateSubmitDialogMsg: false,
         rateDialog: false,
         inputComment: '',
@@ -254,7 +256,7 @@ export default {
                 name: 'Drake',
                 avatar: 'https://i.pravatar.cc/300?img=3',
                 text: this.inputComment,
-                created_at: '3 seconds ago'
+                created_at: '2 seconds ago'
             })
 
             this.inputComment = ''
@@ -264,6 +266,11 @@ export default {
             this.rateDialog = !this.rateDialog
             this.rateSubmitDialogMsg = !this.rateSubmitDialogMsg 
         },
+
+        closeRateDialog() {
+            this.rateSubmitDialogMsg = !this.rateSubmitDialogMsg
+            this.rated = true
+        }
     },
 }
 </script>

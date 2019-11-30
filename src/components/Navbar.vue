@@ -1,15 +1,15 @@
 <template>
     <div>
-        <div class="d-none d-md-flex">
+        <div class="d-lg-flex">
             <v-app-bar
                 app
                 dark
                 class="light-green darken-1 my-mx-15 elevation-0"
             >
-                <span @click="$router.push({ name: 'home' })">
+                <span @click="$router.push({ name: 'home' })" style="cursor: pointer">
                     <img src="../assets/icon.png" height="100" alt="">
                 </span>
-                <span @click="$router.push({ name: 'home' })">
+                <span @click="$router.push({ name: 'home' })" style="cursor: pointer">
                     <v-toolbar-title>Cleaner Marawi</v-toolbar-title>
                 </span>
 

@@ -26,6 +26,9 @@ export default {
             {
                 src: window.origin + '/carousel/hacker.gif',
             },
+            {
+                src: window.origin + '/carousel/tag-line.gif',
+            },
         ]
     }),
 }
